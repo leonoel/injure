@@ -86,6 +86,9 @@
                                (:nodes ast))
                          (conj (emit-ast (:default ast)))))
 
+              :host-field
+              (list '. (emit-ast (:target ast)) (symbol (str "-" (name (:field ast)))))
+
               (:form ast)))
           (coerce-local [[symbol binding]]
             [symbol (or (when (instance? Compiler$LocalBinding binding)
