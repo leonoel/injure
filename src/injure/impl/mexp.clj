@@ -89,6 +89,9 @@
               :host-field
               (list '. (emit-ast (:target ast)) (symbol (str "-" (name (:field ast)))))
 
+              :host-call
+              (list* '. (emit-ast (:target ast)) (:method ast) (map emit-ast (:args ast)))
+
               (:form ast)))
           (coerce-local [[symbol binding]]
             [symbol (or (when (instance? Compiler$LocalBinding binding)
